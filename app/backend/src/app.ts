@@ -2,12 +2,11 @@ import * as express from 'express';
 
 class App {
   public app: express.Express;
-  // ...
 
   constructor() {
     // ...
+    this.app = express();
     this.config();
-    // ...
   }
 
   private config():void {
@@ -19,12 +18,12 @@ class App {
     };
 
     this.app.use(accessControl);
-    // ...
   }
 
-  // ...
   public start(PORT: string | number):void {
-    // ...
+    this.app.listen(PORT, () => {
+      console.log(`server is running on ${PORT}`);
+    });
   }
 }
 
