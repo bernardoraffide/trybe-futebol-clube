@@ -2,7 +2,7 @@
 - [ ] Estou usando `node` na versão `16.15.0 LTS`, para [instalar o nvm](https://github.com/nvm-sh/nvm#installing-and-updating) e rode os comandos abaixo para instalar a versão e usá-la:
    - [ ] `nvm install 16 --lts`
    - [ ] `nvm use 16`
-- [ ] Estou usando `docker-compose` na versão `ˆ1.29.2` [link de refência para instalação no ubuntu](https://phoenixnap.com/kb/install-docker-compose-on-ubuntu-20-04)
+- [ ] Estou usando `docker-compose` na versão `ˆ1.29.2`, use esse [link de referência para essa instalação no ubuntu](https://phoenixnap.com/kb/install-docker-compose-on-ubuntu-20-04)
 - [ ] Configurei minha `Dockerfile` do _frontend_ e do _backend_, copiando arquivos, instalando dependências e rodando a aplicação
 - [ ] No `docker-compose.yml`:
   - [ ] As portas dos serviços foram mapeadas
