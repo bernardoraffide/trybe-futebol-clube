@@ -1,8 +1,17 @@
-interface ILoginPayload {
+interface ILoginUser {
   id: number;
   username: string;
   role: string;
   email: string;
 }
 
-export default ILoginPayload;
+interface ILoginPayload {
+  email: string;
+  password: string;
+}
+
+export
+{
+  ILoginUser,
+  ILoginPayload,
+};
