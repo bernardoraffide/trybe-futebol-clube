@@ -12,4 +12,9 @@ const login = async (req: Request, res: Response) => {
   return res.status(200).json(user);
 };
 
-export default login;
+const getUserRole = (req: Request, res: Response) => res.status(200).json(req.body.user.role);
+
+export {
+  login,
+  getUserRole,
+};
