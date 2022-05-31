@@ -10,8 +10,7 @@ interface ILoginPayload {
   password: string;
 }
 
-export
-{
+export {
   ILoginUser,
   ILoginPayload,
 };

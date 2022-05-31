@@ -1,5 +1,5 @@
 import Users from '../database/models/UsersModel';
-import { ILoginPayload } from '../interfaces';
+import { ILoginPayload } from '../interfaces/index';
 import { generateToken } from '../middlewares/jwt';
 
 const loginService = async (payload: ILoginPayload) => {

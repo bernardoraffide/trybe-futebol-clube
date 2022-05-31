@@ -1,11 +1,11 @@
 import * as jwt from 'jsonwebtoken';
 import * as fs from 'fs/promises';
 import { Request, Response, NextFunction } from 'express';
-import ILoginPayload from '../interfaces';
+import { ILoginUser } from '../interfaces';
 
 const secret = async () => fs.readFile('jwt.evaluation.key', 'utf-8');
 
-const generateToken = async (payload: ILoginPayload) => {
+const generateToken = async (payload: ILoginUser) => {
   const mySecret = await secret();
   const token = jwt.sign(payload, mySecret, {
     expiresIn: '1d',
@@ -33,8 +33,7 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
   }
 };
 
-export
-{
+export {
   generateToken,
   validateToken,
 };
