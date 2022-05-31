@@ -10,7 +10,16 @@ interface ILoginPayload {
   password: string;
 }
 
+interface ICreatedMatch {
+  homeTeam: number;
+  awayTeam: number;
+  homeTeamGoals: number;
+  awayTeamGoals: number;
+  inProgress?: number;
+}
+
 export {
   ILoginUser,
   ILoginPayload,
+  ICreatedMatch,
 };
