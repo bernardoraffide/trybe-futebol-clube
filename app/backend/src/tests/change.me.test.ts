@@ -8,6 +8,7 @@ import  userMocked  from './mocks';
 
 import { Response } from 'superagent';
 import Matches from '../database/models/MatchesModel';
+import Teams from '../database/models/TeamsModel';
 
 chai.use(chaiHttp);
 
@@ -62,3 +63,17 @@ describe('Seu teste', () => {
     expect(chaiHttpResponse.body).to.be.equal({ message: 'All fields must be filled' });
   });
 });
+
+// describe('teams test', () => {
+//   let chaiHttpResponse: Response;
+
+//   before(async () => {
+//     sinon.stub(Teams, 'findOne').resolves({
+//       ...userMocked,
+//     } as Teams);
+//   });
+
+//   after(() => {
+//     (Teams.findOne as sinon.SinonStub).restore();
+//   });
+// })
