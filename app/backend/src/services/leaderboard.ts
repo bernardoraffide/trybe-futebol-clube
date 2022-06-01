@@ -1,75 +1,11 @@
-import {
-  calculatePoints,
-  calculateVictories,
-  calculateLosses,
-  calculateDraw,
-  calcularGolsFavor,
-  calcularGolsContra,
-  calculateTotalScore,
-  calculateVictoriesPercentage,
-  percentualEffi,
-} from '../middlewares/homeLeaderboard';
+import { leaderboardAway } from './awayLeaderboard';
+import { leaderboardHome } from './homeLeaderboard';
 
-import getAllTeams from './teams';
-import Matches from '../database/models/MatchesModel';
-import Teams from '../database/models/TeamsModel';
-import { IHomeMatch } from '../interfaces';
-
-const getAllHomeTeamMatches = async () => {
-  const result = await Matches.findAll({
-    where: {
-      inProgress: false,
-    },
-    include: [
-      {
-        model: Teams,
-        as: 'teamHome',
-        attributes: {
-          exclude: ['id'],
-        },
-      },
-    ],
-  });
-  return result as unknown as IHomeMatch[];
-};
-
-const leaderboardHome = async () => {
-  const homeTeams = await getAllTeams();
-  const homeTeamMatches = await getAllHomeTeamMatches();
-  const matchMap = homeTeams.map((e) => {
-    const home = homeTeamMatches.filter((match) => match.teamHome.teamName === e.teamName);
-    return {
-      name: e.teamName,
-      totalPoints: calculatePoints(home),
-      totalGames: home.length,
-      totalVictories: calculateVictories(home),
-      totalDraws: calculateDraw(home),
-      totalLosses: calculateLosses(home),
-      goalsFavor: calcularGolsFavor(home),
-      goalsOwn: calcularGolsContra(home),
-      goalsBalance: calculateTotalScore(home),
-      efficiency: calculateVictoriesPercentage(home),
-    };
-  });
-  return matchMap;
-};
-
-const leaderHome = async () => {
-  const leader = await leaderboardHome();
-  const result = leader.sort(
-    (a, b) =>
-      b.totalPoints - a.totalPoints
-      || b.totalVictories - a.totalVictories
-      || b.goalsBalance - a.goalsBalance
-      || b.goalsFavor - a.goalsFavor
-      || b.goalsOwn - a.goalsOwn,
-  );
-  return result;
-};
+const percentualEffi = (p: number, g: number) => Number(((p / (g * 3)) * 100).toFixed(2));
 
 const winner = async () => {
   const home = await leaderboardHome();
-  const away = await leaderboardHome();
+  const away = await leaderboardAway();
   const result = home.filter((e, i) => home[i].name).map((element, index) => ({
     name: element.name,
     totalPoints: element.totalPoints + away[index].totalPoints,
@@ -88,9 +24,20 @@ const winner = async () => {
   return result;
 };
 
+const sortLeaderboard = async () => {
+  const leader = await winner();
+  const result = leader.sort(
+    (a, b) =>
+      b.totalPoints - a.totalPoints
+      || b.totalVictories - a.totalVictories
+      || b.goalsBalance - a.goalsBalance
+      || b.goalsFavor - a.goalsFavor
+      || b.goalsOwn - a.goalsOwn,
+  );
+  return result;
+};
+
 export {
-  getAllHomeTeamMatches,
-  leaderboardHome,
   winner,
-  leaderHome,
+  sortLeaderboard,
 };

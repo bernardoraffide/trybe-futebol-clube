@@ -1,10 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
-
-import { leaderHome } from '../services/leaderboard';
+import { sortLeaderboardHome } from '../services/homeLeaderboard';
+import { sortLeaderboardAway } from '../services/awayLeaderboard';
+import { sortLeaderboard } from '../services/leaderboard';
 
 const home = async (_req: Request, res: Response, _next: NextFunction) => {
   try {
-    const ranking = await leaderHome();
+    const ranking = await sortLeaderboardHome();
     if (!ranking) return res.status(404).json();
     return res.status(200).json(ranking);
   } catch (er) {
@@ -14,7 +15,7 @@ const home = async (_req: Request, res: Response, _next: NextFunction) => {
 
 const away = async (_req: Request, res: Response, _next: NextFunction) => {
   try {
-    const ranking = await leaderHome();
+    const ranking = await sortLeaderboardAway();
     if (!ranking) return res.status(404).json();
     return res.status(200).json(ranking);
   } catch (error) {
@@ -24,7 +25,7 @@ const away = async (_req: Request, res: Response, _next: NextFunction) => {
 
 const leaderAll = async (_req: Request, res: Response, _next: NextFunction) => {
   try {
-    const ranking = await leaderHome();
+    const ranking = await sortLeaderboard();
     if (!ranking) return res.status(404).json();
     return res.status(200).json(ranking);
   } catch (e) {
