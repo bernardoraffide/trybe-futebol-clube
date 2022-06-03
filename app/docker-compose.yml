@@ -5,6 +5,7 @@ services:
     ports:
       - 3000:3000
     container_name: app_frontend
+    platform: linux/x86_64 
     depends_on:
       backend:
         condition: service_healthy
@@ -17,6 +18,8 @@ services:
     ports:
       - 3001:3001
     container_name: app_backend
+    platform: linux/x86_64
+    restart: 'always'
     depends_on:
       db:
         condition: service_healthy
@@ -33,6 +36,7 @@ services:
       retries: 5
   db:
     image: mysql:8.0.21
+    platform: linux/x86_64 
     container_name: db
     ports:
       - 3002:3306
