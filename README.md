@@ -261,7 +261,7 @@ Na sua máquina você deve ter:
 </details>
 
 <details>
-  <summary><strong>⚠️Pré-requisitos para uma boa avaliação </strong></summary><br />
+  <summary><strong>⚠️ Pré-requisitos para uma boa avaliação </strong></summary><br />
 
  Para que esse projeto faça a avaliação corretamente, **sua aplicação deve ter um funcionamento mínimo**. Isso porque o avaliador **vai executar um teste de usabilidade E2E** (End-to-end, ou Ponto a ponto). 
 
