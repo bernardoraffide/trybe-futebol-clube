@@ -921,6 +921,8 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   - Será recebido o `id` pelo parâmetro da URL;
 
   - Será validado que ao finalizar uma partida, a alteração é feita no banco de dados e na página.
+  
+  - Necessita da implementação da rota `POST /matches`. 
 	
   - Deve-se retornar, com um status `200`, a seguinte mensagem:
 
