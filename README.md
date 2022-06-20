@@ -896,8 +896,8 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
     "homeTeam": 16, // O valor deve ser o id do time
     "awayTeam": 8, // O valor deve ser o id do time
     "homeTeamGoals": 2,
-    "awayTeamGoals": 2,
-    "inProgress": true // a partida deve ser criada como em progresso
+    "awayTeamGoals": 2, 
+    // a partida deve ser criada como em progresso por padrão
   }
   ```
 
