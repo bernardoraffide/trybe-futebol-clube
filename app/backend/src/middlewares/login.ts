@@ -26,7 +26,7 @@ const validateLogin = async (req: Request, res: Response, next: NextFunction) =>
   }
 
   if (!compareSync(password, loginUser.password)) {
-    return res.status(401).json({ message: 'Invalid email or passwword' });
+    return res.status(401).json({ message: 'Incorrect email or passwword' });
   }
 
   next();
