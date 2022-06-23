@@ -33,6 +33,7 @@ const oneGoal = '1';
 
 describe(getRequirement(29), () => {
   it('Será avaliado que ao fazer a requisição ao endpoint /leaderboard/home será retonado os campos e valores corretos considerando os dados iniciais do banco de dados', async () => {
+    await page.waitForTimeout(2000);
     await page.select(leaderboard.table.filter.select, 'Classificação Mandantes')
     const classificationButton = await page.$(leaderboard.table.filter.button)
     const actionTrigger = () => classificationButton.click()
@@ -41,7 +42,7 @@ describe(getRequirement(29), () => {
 });
 
 describe(getRequirement(30), () => {
-  it('Será avaliado que após acrescentar a partida Botafogo 2 X 1 Grêmio e fazer a requisição ao endpoint /leaderboard/home será retonado os campos e valores corretos', async () => {
+  it('Será avaliado que após acrescentar a partida Corinthians 2 X 1 Internacional e fazer a requisição ao endpoint /leaderboard/home será retonado os campos e valores corretos', async () => {
     const dadosInsert = {
       homeTeam: teams[3].teamName,
       awayTeam: teams[8].teamName,
