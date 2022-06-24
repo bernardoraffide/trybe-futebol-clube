@@ -5,12 +5,6 @@ import Users from '../database/models/UsersModel';
 const validateLogin = async (req: Request, res: Response, next: NextFunction) => {
   const { email, password } = req.body;
 
-  const loginUser = await Users.findOne({ where: { email } });
-
-  if (!loginUser) {
-    return res.status(401).json({ message: 'User not found' });
-  }
-
   if (!email || !password) return res.status(400).json({ message: 'All fields must be filled' });
 
   if (typeof email !== 'string' || typeof password !== 'string') {
@@ -23,6 +17,12 @@ const validateLogin = async (req: Request, res: Response, next: NextFunction) =>
 
   if (password.length <= 6) {
     return res.status(401).json({ message: 'Password must have at least 6 characters' });
+  }
+
+  const loginUser = await Users.findOne({ where: { email } });
+
+  if (!loginUser) {
+    return res.status(401).json({ message: 'User not found' });
   }
 
   if (!compareSync(password, loginUser.password)) {
