@@ -83,7 +83,10 @@ const calculateVictoriesPercentage = (matches: IAwayMatch[]) => {
   const partidas = matches.length * 3;
   const victoryPercentage = points / partidas;
 
-  return (victoryPercentage * 100).toFixed(2);
+  if (!Number.isInteger(victoryPercentage * 100)) {
+    return (victoryPercentage * 100).toFixed(2);
+  }
+  return victoryPercentage * 100;
 };
 
 export {
