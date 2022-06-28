@@ -8,7 +8,7 @@ const validateLogin = async (req: Request, res: Response, next: NextFunction) =>
   if (!email || !password) return res.status(400).json({ message: 'All fields must be filled' });
 
   if (typeof email !== 'string' || typeof password !== 'string') {
-    return res.status(401).json({ message: 'Invalid email or passwword' });
+    return res.status(401).json({ message: 'Invalid email or password' });
   }
 
   const regex = /\S+@\S+.\S\.+com/;
@@ -26,7 +26,7 @@ const validateLogin = async (req: Request, res: Response, next: NextFunction) =>
   }
 
   if (!compareSync(password, loginUser.password)) {
-    return res.status(401).json({ message: 'Incorrect email or passwword' });
+    return res.status(401).json({ message: 'Incorrect email or password' });
   }
 
   next();
