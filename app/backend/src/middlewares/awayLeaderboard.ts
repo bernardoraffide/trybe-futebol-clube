@@ -2,6 +2,7 @@ import { IAwayMatch } from '../interfaces';
 
 const calculatePoints = (matches: IAwayMatch[]) => {
   let points = 0;
+
   matches.forEach((match) => {
     if (match.homeTeamGoals < match.awayTeamGoals) {
       points += 3;
@@ -16,6 +17,7 @@ const calculatePoints = (matches: IAwayMatch[]) => {
 
 const calculateVictories = (matches: IAwayMatch[]) => {
   let victories = 0;
+
   matches.forEach((match) => {
     if (match.homeTeamGoals < match.awayTeamGoals) {
       victories += 1;
@@ -26,6 +28,7 @@ const calculateVictories = (matches: IAwayMatch[]) => {
 
 const calculateLosses = (matches: IAwayMatch[]) => {
   let losses = 0;
+
   matches.forEach((match) => {
     if (match.homeTeamGoals < match.awayTeamGoals) {
       losses += 1;
@@ -36,6 +39,7 @@ const calculateLosses = (matches: IAwayMatch[]) => {
 
 const calculateDraw = (matches: IAwayMatch[]) => {
   let draws = 0;
+
   matches.forEach((match) => {
     if (match.homeTeamGoals === match.awayTeamGoals) {
       draws += 1;
@@ -46,6 +50,7 @@ const calculateDraw = (matches: IAwayMatch[]) => {
 
 const calcularGolsFavor = (matches: IAwayMatch[]) => {
   let gols = 0;
+
   matches.forEach((match) => {
     if (match.awayTeamGoals) {
       gols += match.awayTeamGoals;
@@ -56,6 +61,7 @@ const calcularGolsFavor = (matches: IAwayMatch[]) => {
 
 const calcularGolsContra = (matches: IAwayMatch[]) => {
   let gols = 0;
+
   matches.forEach((match) => {
     if (match.homeTeamGoals) {
       gols += match.homeTeamGoals;
@@ -77,7 +83,8 @@ const calculateVictoriesPercentage = (matches: IAwayMatch[]) => {
   const partidas = matches.length * 3;
   const victoryPercentage = points / partidas;
 
-  return (victoryPercentage * 100).toFixed(2);
+  // return (victoryPercentage * 100).toFixed(2);
+  return (victoryPercentage * 100);
 };
 
 export {
