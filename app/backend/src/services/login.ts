@@ -5,7 +5,7 @@ import { generateToken } from '../middlewares/jwt';
 const loginService = async (payload: ILoginPayload) => {
   const loginUser = await Users.findOne({ where: { email: payload.email } });
 
-  if (!loginUser) return null;
+  if (!loginUser) throw new Error('usuário não encontrado');
 
   const { id, username, role, email } = loginUser;
 

@@ -4,13 +4,9 @@ const calculatePoints = (matches: IAwayMatch[]) => {
   let points = 0;
 
   matches.forEach((match) => {
-    if (match.homeTeamGoals < match.awayTeamGoals) {
-      points += 3;
-    }
+    if (match.homeTeamGoals < match.awayTeamGoals) points += 3;
 
-    if (match.homeTeamGoals === match.awayTeamGoals) {
-      points += 1;
-    }
+    if (match.homeTeamGoals === match.awayTeamGoals) points += 1;
   });
   return points;
 };
@@ -19,9 +15,7 @@ const calculateVictories = (matches: IAwayMatch[]) => {
   let victories = 0;
 
   matches.forEach((match) => {
-    if (match.homeTeamGoals < match.awayTeamGoals) {
-      victories += 1;
-    }
+    if (match.homeTeamGoals < match.awayTeamGoals) victories += 1;
   });
   return victories;
 };
@@ -39,9 +33,7 @@ const calculateDraw = (matches: IAwayMatch[]) => {
   let draws = 0;
 
   matches.forEach((match) => {
-    if (match.homeTeamGoals === match.awayTeamGoals) {
-      draws += 1;
-    }
+    if (match.homeTeamGoals === match.awayTeamGoals) draws += 1;
   });
   return draws;
 };
@@ -50,9 +42,7 @@ const calcularGolsFavor = (matches: IAwayMatch[]) => {
   let gols = 0;
 
   matches.forEach((match) => {
-    if (match.awayTeamGoals) {
-      gols += match.awayTeamGoals;
-    }
+    if (match.awayTeamGoals) gols += match.awayTeamGoals;
   });
   return gols;
 };
@@ -61,9 +51,7 @@ const calcularGolsContra = (matches: IAwayMatch[]) => {
   let gols = 0;
 
   matches.forEach((match) => {
-    if (match.homeTeamGoals) {
-      gols += match.homeTeamGoals;
-    }
+    if (match.homeTeamGoals) gols += match.homeTeamGoals;
   });
   return gols;
 };

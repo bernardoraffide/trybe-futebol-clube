@@ -7,9 +7,7 @@ const home = async (_req: Request, res: Response, _next: NextFunction) => {
   try {
     const ranking = await sortLeaderboardHome();
 
-    if (!ranking) {
-      return res.status(404).json();
-    }
+    if (!ranking) return res.status(404).json();
 
     return res.status(200).json(ranking);
   } catch (e) {

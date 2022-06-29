@@ -6,6 +6,7 @@ import { login, getUserRole } from '../controllers/login';
 const loginRouter = Router();
 
 loginRouter.post('/', validateLogin, login);
+
 loginRouter.get('/validate', validateToken, getUserRole);
 
 export default loginRouter;

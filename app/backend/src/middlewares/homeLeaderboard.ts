@@ -4,13 +4,9 @@ const calculatePoints = (matches: IHomeMatch[]) => {
   let points = 0;
 
   matches.forEach((match) => {
-    if (match.homeTeamGoals > match.awayTeamGoals) {
-      points += 3;
-    }
+    if (match.homeTeamGoals > match.awayTeamGoals) points += 3;
 
-    if (match.homeTeamGoals === match.awayTeamGoals) {
-      points += 1;
-    }
+    if (match.homeTeamGoals === match.awayTeamGoals) points += 1;
   });
   return points;
 };
@@ -52,9 +48,7 @@ const calcularGolsFavor = (matches: IHomeMatch[]) => {
   let gols = 0;
 
   matches.forEach((match) => {
-    if (match.homeTeamGoals) {
-      gols += match.homeTeamGoals;
-    }
+    if (match.homeTeamGoals) gols += match.homeTeamGoals;
   });
   return gols;
 };
@@ -63,9 +57,7 @@ const calcularGolsContra = (matches: IHomeMatch[]) => {
   let gols = 0;
 
   matches.forEach((match) => {
-    if (match.awayTeamGoals) {
-      gols += match.awayTeamGoals;
-    }
+    if (match.awayTeamGoals) gols += match.awayTeamGoals;
   });
   return gols;
 };
