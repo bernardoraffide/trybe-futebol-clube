@@ -30,9 +30,7 @@ const calculateLosses = (matches: IAwayMatch[]) => {
   let losses = 0;
 
   matches.forEach((match) => {
-    if (match.homeTeamGoals > match.awayTeamGoals) {
-      losses += 1;
-    }
+    if (match.homeTeamGoals > match.awayTeamGoals) losses += 1;
   });
   return losses;
 };
