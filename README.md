@@ -6,8 +6,10 @@ The Front-end was already done by Trybe, so i'll focus in the stacks i practiced
 
 - Typescript
 - Nodejs
-- Express
 - Docker 
+- MySQL
+- Sequelize
+- Express
 - Chai & Sinon (tests) 
 - bcrypt
 
